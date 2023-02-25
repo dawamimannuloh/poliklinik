@@ -4,7 +4,7 @@
  */
 package Master_data.Data_Obat;
 
-import Koneksi.koneksi_db;
+import Koneksi.Koneksi_db;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.TimerTask;
@@ -33,7 +33,7 @@ public class Obat extends javax.swing.JInternalFrame {
         try {
             int no=1;
             String sql = "select * from db_obat";
-            java.sql.Connection conn=(Connection)koneksi_db.koneksi_db();
+            java.sql.Connection conn=(Connection)Koneksi_db.koneksiDB();
             java.sql.Statement stm=conn.createStatement();
             java.sql.ResultSet res=stm.executeQuery(sql);
             while(res.next()){
@@ -455,7 +455,7 @@ public class Obat extends javax.swing.JInternalFrame {
                 +txt_kodeobat.getText()+"','"+txt_nmobat.getText()+"','"
                 +txt_kemasan.getText()+"','"+txt_qty.getText()+"','"+txt_hpp.getText()
                 +"','"+txt_harga.getText()+"','"+txt_tglmasuk.getText()+"')";
-                java.sql.Connection con = (Connection)koneksi_db.koneksi_db();
+                java.sql.Connection con = (Connection)Koneksi_db.koneksiDB();
                 java.sql.PreparedStatement pst = con.prepareStatement(sql);
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
@@ -475,7 +475,7 @@ public class Obat extends javax.swing.JInternalFrame {
                 +"', kemasan='"+txt_kemasan.getText()+"', qty = '"+txt_qty.getText()+"', hpp ='"
                 +txt_hpp.getText()+"',harga = '"+txt_harga.getText()+"',tgl_masuk ='"+txt_tglmasuk.getText()
                 + "' WHERE id='"+txt_id.getText()+"'";
-                java.sql.Connection conn=(Connection)koneksi_db.koneksi_db();
+                java.sql.Connection conn=(Connection)Koneksi_db.koneksiDB();
                 java.sql.PreparedStatement pst=conn.prepareStatement(sql);
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "Data Berhasil Diedit");
@@ -489,7 +489,7 @@ public class Obat extends javax.swing.JInternalFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
      try {
                 String sql ="delete from db_obat where id='"+txt_id.getText()+"'";
-                java.sql.Connection conn=(Connection)koneksi_db.koneksi_db();
+                java.sql.Connection conn=(Connection)Koneksi_db.koneksiDB();
                 java.sql.PreparedStatement pst=conn.prepareStatement(sql);
                 pst.execute();
                 JOptionPane.showMessageDialog(this, "Data Berhasil Dihapus");
